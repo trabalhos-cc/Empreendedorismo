@@ -15,7 +15,7 @@ public class SQLConnect {
 	public static Connection getConnection(String user, String pw) throws SQLException, ClassNotFoundException {
 		  
 		try {
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/eventos?useTimezone=true&serverTimezone=UTC", "root", "root");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventos?useTimezone=true&serverTimezone=UTC", "root", "root");
 			return connection;
 		}catch (Exception e) {System.out.println(e); } 
 		return null;
