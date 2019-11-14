@@ -32,12 +32,12 @@ public class DaoLocal {
 		}
 	}
 	
-	public Local consultar(String nome, Connection con) throws SQLException {
+	public Local consultar(int id, Connection con) throws SQLException {
 		String sql = "SELECT local.*, sublugar.* FROM local"
 				+ " INNER JOIN sublugar ON sublugar.idsublugar = local.idsublugar"
-				+ " WHERE local.nome = ?;";
+				+ " WHERE local.idlocal = ?;";
 		PreparedStatement stt = con.prepareStatement(sql);
-		stt.setString(1, nome);
+		stt.setInt(1, id);
 		ResultSet res = stt.executeQuery();
 		if (!res.next()) {
 			return null;

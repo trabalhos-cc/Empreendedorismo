@@ -17,10 +17,13 @@ public class ColAtividade {
 		con = connection;
 	}
 	
-	public void inserirAtividade(ArrayList<Atividade> atividade, Connection con) throws NegocioException, SQLException {
+	public int inserirAtividade(ArrayList<Atividade> atividade, Connection con) throws NegocioException, SQLException {
 		
+		int res = 0;
 		DaoAtividade atividade1 = new DaoAtividade();
-		atividade1.insereAtividade(atividade, con);
+		res = atividade1.insereAtividade(atividade, con);
+		
+		return res;
 	}
 	
 	public ArrayList<Atividade> consultarAtividade(int idAtividade, Connection con) throws NegocioException, SQLException{

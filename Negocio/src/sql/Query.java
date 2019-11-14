@@ -1,6 +1,7 @@
 package sql;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -59,21 +60,21 @@ public class Query {
 		}
 	}
 
-//	public static Connection getConnection() throws Exception {
-//
-//		try {
+	public static Connection getConnection() throws SQLException {
+
+		try {
 //			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-//			Class.forName("com.mysql.jdbc.Driver");
-//			
-//			Connection conn = DriverManager
-//					.getConnection("jdbc:mysql://localhost:3306/mydb?useTimezone=true&serverTimezone=UTC", "root", "Dinamica@123");
-//			
-//			return conn;
-//
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-//
-//		return null;
-//	}
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection conn = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/eventos?useTimezone=true&serverTimezone=UTC", "root", "root");
+			
+			return conn;
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return null;
+	}
 }

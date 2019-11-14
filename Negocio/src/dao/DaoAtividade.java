@@ -15,7 +15,7 @@ import util.NegocioException;
 
 public class DaoAtividade {
 
-	public void insereAtividade(ArrayList<Atividade> listaAtividade, Connection con) throws SQLException {
+	public int insereAtividade(ArrayList<Atividade> listaAtividade, Connection con) throws SQLException {
 
 		String sql = "INSERT INTO atividade (nome, data, horarioInicio, horarioFim, idtipoAtividade, idlocal) VALUES (?,?,?,?,?,?)";
 
@@ -30,8 +30,17 @@ public class DaoAtividade {
 			create.setInt(5, atividade.getTipoAtividade().getId());
 			create.setInt(6, atividade.getLocal().getId());
 			create.execute();
+			ResultSet generatedKeys;
+			try { 
+				generatedKeys = create.getGeneratedKeys();
+				generatedKeys.next();
+			    return generatedKeys.getInt(1);
+			}catch (Exception e) {
+				System.out.println(e.getMessage());
+			    return 0;
+			}
 		}
-
+		return 0;
 	}
 
 	public ArrayList<Atividade> consultarAtividade(int idAtividade, Connection con) throws NegocioException, SQLException {

@@ -24,12 +24,12 @@ public class ColLocal {
 		return res ;
 	}
 	
-	public Local consultarLocal(String nome, Connection con) throws NegocioException, SQLException {
+	public Local consultarLocal(int id, Connection con) throws NegocioException, SQLException {
 		
 		DaoLocal local = new DaoLocal();
 		Local res = new Local();
 		
-		res = local.consultar(nome, con);
+		res = local.consultar(id, con);
 		return res;
 	}
 	
