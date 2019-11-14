@@ -3,6 +3,8 @@
 	<name>Teste</name>
 	<comment></comment>
 	<projects>
+		<project>EventoBO</project>
+		<project>Negocio</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
