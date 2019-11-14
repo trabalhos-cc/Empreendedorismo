@@ -7,8 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import unioeste.geral.evento.bo.Apresentador;
 import unioeste.geral.evento.bo.Atividade;
+import unioeste.geral.evento.bo.Local;
+import unioeste.geral.evento.bo.SubLugar;
+import unioeste.geral.evento.bo.TipoAtividade;
 import util.NegocioException;
 
 public class DaoAtividade {
@@ -43,13 +45,32 @@ public class DaoAtividade {
 		int i=0;
 		while (res.next()) {
 			Atividade atividade = new Atividade();
+			TipoAtividade ta = new TipoAtividade();
 			atividade.setId(res.getInt("idapresentador"));
 			atividade.setData(res.getDate("data"));
 			atividade.setHorarioInicio(res.getTime("horarioInicio"));
 			atividade.setHorarioFim(res.getTime("horarioFim"));
-			
-			
 			atividade.setNome(res.getString("nome"));
+			
+			ta.setId(res.getInt("idtipoAtividade"));
+			ta.setNome(res.getString("nome"));
+			atividade.setTipoAtividade(ta);
+			
+			Local local = new Local();
+			SubLugar subLocal  = new SubLugar();
+			
+			local.setId(res.getInt("idlocal"));
+			local.setNome(res.getString("nome"));
+			local.setLatitude(res.getString("latitude"));
+			local.setLatitude(res.getString("longitude"));
+			
+			subLocal.setId(res.getInt("idsublugar"));
+			subLocal.setBloco(res.getString("bloco"));
+			subLocal.setBloco(res.getString("espaco"));
+			subLocal.setBloco(res.getString("sala"));
+			
+			local.setSubLugar(subLocal);
+			atividade.setLocal(local);
 			System.out.println(res.getString("Apresentador"));
 			
 			m.add(i,atividade);
