@@ -25,7 +25,7 @@ const map = new Map({
   view: view
 });
 
-// Geolocation marker
+// Geolocation marker b
 const markerEl = document.getElementById('geolocation_marker');
 const marker = new Overlay({
   positioning: 'center-center',

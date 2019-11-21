@@ -3,6 +3,7 @@
 	<name>Admin_Login</name>
 	<comment></comment>
 	<projects>
+		<project>CamadaServico</project>
 		<project>Negocio</project>
 	</projects>
 	<buildSpec>

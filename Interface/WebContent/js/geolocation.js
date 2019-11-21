@@ -43,3 +43,5 @@ var geolocation = new ol.Geolocation({
     view.setCenter(pos);
     view.setZoom(18); 
   });
+  
+  
