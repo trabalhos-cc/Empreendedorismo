@@ -22,7 +22,7 @@ html, body, .map {
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	height: 800px;
+	height: 100%;
 }
 
 </style>
@@ -46,7 +46,6 @@ html, body, .map {
 <!-- 		<button id="geolocate">Geolocate Me!</button> -->
 
 <!-- 		<button id="geolocate">Geolocate Me!</button> -->
-	</div>
 <!-- 	<script src="common.js"></script> -->
 <!-- 	<script src="geolocation-orientation.js"></script> -->
 	

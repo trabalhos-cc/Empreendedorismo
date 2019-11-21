@@ -2,16 +2,18 @@ package unioeste.geral.evento.bo;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 
 public class Atividade {
 
 	private int id;
 	private String nome;
 	private Date data;
-	private Time horarioInicio;
-	private Time horarioFim;
+	private Time horario;
 	private TipoAtividade tipoAtividade;
 	private Local local;
+	private ArrayList<Apresentador> apresentadores;
+	
 	public int getId() {
 		return id;
 	}
@@ -30,17 +32,11 @@ public class Atividade {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	public Time getHorarioInicio() {
-		return horarioInicio;
+	public Time getHorario() {
+		return horario;
 	}
-	public void setHorarioInicio(Time horarioInicio) {
-		this.horarioInicio = horarioInicio;
-	}
-	public Time getHorarioFim() {
-		return horarioFim;
-	}
-	public void setHorarioFim(Time horarioFim) {
-		this.horarioFim = horarioFim;
+	public void setHorario(Time horario) {
+		this.horario = horario;
 	}
 	public TipoAtividade getTipoAtividade() {
 		return tipoAtividade;
@@ -54,8 +50,12 @@ public class Atividade {
 	public void setLocal(Local local) {
 		this.local = local;
 	}
+	public ArrayList<Apresentador> getApresentadores() {
+		return apresentadores;
+	}
+	public void setApresentadores(ArrayList<Apresentador> apresentadores) {
+		this.apresentadores = apresentadores;
+	}
 	
-	
-	
-	
+
 }

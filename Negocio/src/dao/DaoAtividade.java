@@ -17,7 +17,7 @@ public class DaoAtividade {
 
 	public int insereAtividade(ArrayList<Atividade> listaAtividade, Connection con) throws SQLException {
 
-		String sql = "INSERT INTO atividade (nome, data, horarioInicio, horarioFim, idtipoAtividade, idlocal) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO atividade (nome, data, horario, idtipoAtividade, idlocal) VALUES (?,?,?,?,?)";
 
 		// PreparedStatement create = con.prepareStatement(sql);
 
@@ -25,10 +25,9 @@ public class DaoAtividade {
 			PreparedStatement create = con.prepareStatement(sql);
 			create.setString(1, atividade.getNome());
 			create.setDate(2, new Date (atividade.getData().getTime()));
-			create.setTime(3, atividade.getHorarioInicio());
-			create.setTime(4, atividade.getHorarioFim());
-			create.setInt(5, atividade.getTipoAtividade().getId());
-			create.setInt(6, atividade.getLocal().getId());
+			create.setTime(3, atividade.getHorario());
+			create.setInt(4, atividade.getTipoAtividade().getId());
+			create.setInt(5, atividade.getLocal().getId());
 			create.execute();
 			ResultSet generatedKeys;
 			try { 
@@ -57,8 +56,7 @@ public class DaoAtividade {
 			TipoAtividade ta = new TipoAtividade();
 			atividade.setId(res.getInt("idapresentador"));
 			atividade.setData(res.getDate("data"));
-			atividade.setHorarioInicio(res.getTime("horarioInicio"));
-			atividade.setHorarioFim(res.getTime("horarioFim"));
+			atividade.setHorario(res.getTime("horario"));
 			atividade.setNome(res.getString("nome"));
 			
 			ta.setId(res.getInt("idtipoAtividade"));

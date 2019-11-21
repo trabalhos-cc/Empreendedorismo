@@ -1,7 +1,6 @@
 package unioeste.geral.evento.bo;
 
-import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 public class Evento {
 
@@ -9,36 +8,12 @@ public class Evento {
 	private String nome;
 	private Date dataInicio;
 	private Date dataFim;
-	private Time horarioInicio;
-	private Time horarioFim;
 	
-	public Date getDataFim() {
-		return this.dataFim;
-	}
-	public Date getdataInicio() {
-		return this.dataInicio;
-	}
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-	public Time getHorarioInicio() {
-		return this.horarioInicio;
-	}
-	public void setHorarioInicio(Time horarioInicio) {
-		this.horarioInicio = horarioInicio;
-	}
-	public Time getHorarioFim() {
-		return this.horarioFim;
-	}
-	public void setHorarioFim(Time horarioFim) {
-		this.horarioFim = horarioFim;
-	}
-	private Staff staff;
-	private Local local;
-	
+//	public Evento(String nome, Date ini, Date fim) {
+//		this.nome = nome;
+//		this.dataInicio = ini;
+//		this.dataFim = fim;
+//	}
 	public int getId() {
 		return id;
 	}
@@ -54,18 +29,13 @@ public class Evento {
 	public Date getDataInicio() {
 		return dataInicio;
 	}
-	public Staff getStaff() {
-		return staff;
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
 	}
-	public void setStaff(Staff staff) {
-		this.staff = staff;
+	public Date getDataFim() {
+		return dataFim;
 	}
-	public Local getLocal() {
-		return local;
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
 	}
-	public void setLocal(Local local) {
-		this.local = local;
-	}
-	
-	
 }

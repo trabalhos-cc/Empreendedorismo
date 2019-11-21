@@ -13,14 +13,13 @@ public class DaoApresentador {
 
 	public void insereApresentador(ArrayList<Apresentador> listaApresentador, Connection con) throws SQLException {
 
-		String sql = "INSERT INTO apresentador (nome, dtNascimento, instituicao/empresa, formacao) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO apresentador (nome, instituicao, formacao) VALUES (?,?,?)";
 
 		// PreparedStatement create = con.prepareStatement(sql);
 
 		for (Apresentador apresentador : listaApresentador) {
 			PreparedStatement create = con.prepareStatement(sql);
 			create.setString(1, apresentador.getNome());
-			create.setString(2, apresentador.getDtNascimento());
 			create.setString(3, apresentador.getInstituicao());
 			create.setString(4, apresentador.getFormacao());
 			create.execute();
@@ -40,8 +39,7 @@ public class DaoApresentador {
 		while (res.next()) {
 			Apresentador apresentador = new Apresentador();
 			apresentador.setId(res.getInt("idapresentador"));
-			apresentador.setDtNascimento(res.getString("dtNascimento"));
-			apresentador.setInstituicao(res.getString("instituicao/empresa"));
+			apresentador.setInstituicao(res.getString("instituicao"));
 			apresentador.setFormacao(res.getString("formacao"));
 			apresentador.setNome(res.getString("nome"));
 			System.out.println(res.getString("Apresentador"));

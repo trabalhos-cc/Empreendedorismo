@@ -2,6 +2,7 @@ package controle;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dao.DaoEvento;
 import unioeste.geral.evento.bo.Evento;
@@ -20,14 +21,14 @@ public Connection con;
 		int res = 0;
 		DaoEvento daoEvento = new DaoEvento();
 		
-		res = daoEvento.insereEvento(e, con);
+		res = daoEvento.insereEvento(e.getNome(), e.getDataInicio(), e.getDataFim(), con);
 		return res ;
 	}
 	
-	public Evento consultarEvento(String nome, Connection con) throws NegocioException, SQLException {
+	public ArrayList<Evento> consultarEvento(String nome, Connection con) throws NegocioException, SQLException {
 		
 		DaoEvento evento = new DaoEvento();
-		Evento res = new Evento();
+		ArrayList<Evento> res = new ArrayList<>();
 		
 		res = evento.consultar(nome, con);
 		return res;

@@ -2,10 +2,10 @@ package servico;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import sql.Query;
 
 import controle.ColAtividade;
 import controle.ColLocal;
-import sql.Query;
 import unioeste.geral.evento.bo.Atividade;
 
 public class UCManterAtividade {
