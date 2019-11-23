@@ -20,7 +20,7 @@ public Connection con;
 		
 		int res = 0;
 		DaoEvento daoEvento = new DaoEvento();
-		if (daoEvento.validarEvento(e.getNome())){
+		if (daoEvento.validarEvento(e.getNome(), con)){
 			res = daoEvento.insereEvento(e.getNome(), e.getDataInicio(), e.getDataFim(), con);
 		}else {
 			System.out.println("Já existe um evento cadastrado com esse nome!");

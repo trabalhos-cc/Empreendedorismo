@@ -28,8 +28,8 @@ public class UCManterEvento {
 					e.setNome(nome);
 					e.setDataInicio(new java.sql.Date(ini.getTime()));
 					e.setDataFim(new java.sql.Date(fim.getTime()));
-					colEvento.inserirEvento(e, con);
-					ok = 1;
+					ok = colEvento.inserirEvento(e, con);
+					
 				}
 				con.commit();
 					

@@ -59,5 +59,12 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 		return m;
 	}
 	
-	public boolean validarEvento(String nome) {return true;}
+	public boolean validarEvento(String nome, Connection con) throws SQLException {
+		
+		ArrayList<Evento> e = new ArrayList<>();
+		e = consultar(nome, con);
+		
+		if(e.size() > 0) return false;
+		return true;
+	}
 }
