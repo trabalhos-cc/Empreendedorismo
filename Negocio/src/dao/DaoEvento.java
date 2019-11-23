@@ -35,9 +35,8 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 	public ArrayList<Evento> consultar(String nome, Connection con) throws SQLException {
 		
 		ArrayList<Evento> m = new ArrayList<>();
-		String sql = "SELECT evento.* , local.* FROM evento"
-				+ " INNER JOIN local ON local.idlocal = evento.idlocal"
-				+ " WHERE local.nome = ?;";
+		String sql = "SELECT * FROM \"Eventos\""
+				+ " WHERE \"nome\" = ?;";
 		
 		PreparedStatement stt = con.prepareStatement(sql);
 		stt.setString(1, nome);
@@ -50,8 +49,8 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 			
 			evento.setId(res.getInt("idevento"));
 			evento.setNome(res.getString("nome"));
-			evento.setDataInicio(res.getDate("dataInicio"));
-			evento.setDataFim(res.getDate("dataFim"));
+			evento.setDataInicio(res.getDate("dtInicio"));
+			evento.setDataFim(res.getDate("dtFim"));
 	
 			m.add(i, evento);
 			i++;

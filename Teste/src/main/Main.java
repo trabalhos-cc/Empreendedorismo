@@ -1,9 +1,9 @@
 package main;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 
 import servico.UCManterEvento;
+import unioeste.geral.evento.bo.Evento;
 
 public class Main {
 
@@ -11,18 +11,23 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		UCManterEvento me = new UCManterEvento();
+//		
+//		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+//		Date ini = sdf.parse("27-11-2019");
+//		Date fim = sdf.parse("29-11-2019");
+//		int ok = me.cadastrarEvento("LatinoWare2", ini, fim);
+//		
+//		if(ok == 1) {
+//			System.out.println("Evento cadastrado");
+//		}else {
+//			System.out.println("Erro");
+//		}
 		
-		SimpleDateFormat sdfini = new SimpleDateFormat("27/11/2019");
-		Date ini = sdfini.parse("27/11/2019");
-		SimpleDateFormat sdffim = new SimpleDateFormat("29/11/2019");
-		Date fim = sdffim.parse("29/11/2019");
-		int ok = me.cadastrarEvento("LatinoWare", ini, fim);
+		ArrayList<Evento> e = new ArrayList<>();
 		
-		if(ok == 1) {
-			System.out.println("Evento cadastrado");
-		}else {
-			System.out.println("Erro");
-		}
-	}
+		e = me.consultaEvento("LatinoWare2");
+		
+		e.forEach(i->System.out.println(i.getNome() + " " + i.getDataInicio() + " " + i.getDataFim()));
+	} 
 
 }
