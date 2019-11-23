@@ -22,14 +22,17 @@ public class UCManterEvento {
 			
 			try {
 				if(nome != "") {
+					/*buscar nome */
+//					if () {
 					
-					Evento e = new Evento();
-					
-					e.setNome(nome);
-					e.setDataInicio(new java.sql.Date(ini.getTime()));
-					e.setDataFim(new java.sql.Date(fim.getTime()));
-					colEvento.inserirEvento(e, con);
-					ok = 1;
+						Evento e = new Evento();
+						
+						e.setNome(nome);
+						e.setDataInicio(new java.sql.Date(ini.getTime()));
+						e.setDataFim(new java.sql.Date(fim.getTime()));
+						colEvento.inserirEvento(e, con);
+						ok = 1;
+//					}
 
 				}
 				con.commit();
@@ -50,11 +53,6 @@ public class UCManterEvento {
 		ArrayList <Evento> evento = new ArrayList<>();
 		evento = colEvento.consultarEvento(nome, con);
 				
-		for (int i = 0; i < evento.size(); i++) {
-			Evento ev = evento.get(i);
-//			ColLocal colLocal = new ColLocal(con);
-//			ev.setIdLocal(colLocal.consultarLocal(ev.getId(), con));
-		}
 		
 		return evento;
 	}

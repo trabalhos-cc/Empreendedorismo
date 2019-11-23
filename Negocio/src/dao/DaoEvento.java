@@ -14,7 +14,7 @@ public class DaoEvento {
 
 public int insereEvento(String nome, Date ini, Date fim, Connection con) throws SQLException {
 		
-		String sql = "INSERT INTO evento (nome, dataInicio, dataFim) VALUES (?,?,?)";
+		String sql = "INSERT INTO \"Eventos\" (\"nome\", \"dtInicio\", \"dtFim\") VALUES (?,?,?)";
 		
 		PreparedStatement create = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		create.setString(1,nome);

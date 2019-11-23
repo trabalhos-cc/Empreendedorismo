@@ -1,22 +1,27 @@
 package main;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import servico.UCManterAtividade;
-import unioeste.geral.evento.bo.Atividade;
+import servico.UCManterEvento;
 
 public class Main {
 
 	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
 		
-		UCManterAtividade ma = new UCManterAtividade();
-		ArrayList<Atividade> atividades = new ArrayList<>();
+		UCManterEvento me = new UCManterEvento();
 		
-		atividades = ma.consultaAtividade(1);
+		SimpleDateFormat sdfini = new SimpleDateFormat("27/11/2019");
+		Date ini = sdfini.parse("27/11/2019");
+		SimpleDateFormat sdffim = new SimpleDateFormat("29/11/2019");
+		Date fim = sdffim.parse("29/11/2019");
+		int ok = me.cadastrarEvento("LatinoWare", ini, fim);
 		
-		for(int i = 0; i < atividades.size(); i++) {
-			System.out.println(atividades.get(i).getId());
+		if(ok == 1) {
+			System.out.println("Evento cadastrado");
+		}else {
+			System.out.println("Erro");
 		}
 	}
 

@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/EventoBO"/>
 	<classpathentry kind="lib" path="/MyInfraAPI/src/unioeste/apoio/mysql/mysql-connector-java-5.1.47-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gabriel/Documents/GitHub/Empreendedorismo/MyInfraAPI/src/unioeste/apoio/mysql/postgresql-42.2.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

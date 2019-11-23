@@ -63,12 +63,12 @@ public class Query {
 	public static Connection getConnection() throws SQLException {
 
 		try {
-			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			DriverManager.registerDriver(new org.postgresql.Driver());
+			Class.forName("org.postgresql.Driver").newInstance();
 			
 			Connection conn = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/eventos?useTimezone=true&serverTimezone=UTC", "root", "root");
-			
+					.getConnection("jdbc:postgresql://localhost:5432/Evento", "postgres", "root");
+//			?useTimezone=true&serverTimezone=UTC
 			return conn;
 
 		} catch (Exception e) {
