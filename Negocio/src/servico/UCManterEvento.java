@@ -22,18 +22,14 @@ public class UCManterEvento {
 			
 			try {
 				if(nome != "") {
-					/*buscar nome */
-//					if () {
-					
-						Evento e = new Evento();
+				
+					Evento e = new Evento();
 						
-						e.setNome(nome);
-						e.setDataInicio(new java.sql.Date(ini.getTime()));
-						e.setDataFim(new java.sql.Date(fim.getTime()));
-						colEvento.inserirEvento(e, con);
-						ok = 1;
-//					}
-
+					e.setNome(nome);
+					e.setDataInicio(new java.sql.Date(ini.getTime()));
+					e.setDataFim(new java.sql.Date(fim.getTime()));
+					colEvento.inserirEvento(e, con);
+					ok = 1;
 				}
 				con.commit();
 					

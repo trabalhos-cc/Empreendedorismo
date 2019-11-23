@@ -59,4 +59,6 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 
 		return m;
 	}
+	
+	public boolean validarEvento(String nome) {return true;}
 }
