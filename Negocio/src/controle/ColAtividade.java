@@ -27,6 +27,7 @@ public class ColAtividade {
 		DaoLocal daoLocal = new DaoLocal();
 		int idlocal = daoLocal.getId(local.getBloco(), local.getEspaco(), local.getSala(), con);
 		int idTipo = daoAtividade.getId(tp.getNome(), con);
+//		int idApresentador = dao
 		
 		if(daoAtividade.validarAtividade(atividade.getNome(), con)) {
 			if(idlocal != -1) {

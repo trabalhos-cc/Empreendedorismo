@@ -28,10 +28,11 @@ public class DaoAtividade {
 		return true;
 	}
 
-	public int insereAtividade(String nome, Date data, Timestamp horaI, Timestamp horaF, int local, int tipo , Connection con) throws SQLException {
+	public int insereAtividade(String nome, Date data, Timestamp horaI, Timestamp horaF, int local, int tipo , 
+			int apresentador, Connection con) throws SQLException {
 
-		String sql = "INSERT INTO \"Atividade\" (\"nome\", \"data\", \"horarioI\", \"horarioF\", \"idLocal\", \"idTipoAtividade\") "
-				+ "VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO \"Atividade\" (\"nome\", \"data\", \"horarioI\", \"horarioF\", \"idLocal\", \"idTipoAtividade\", "
+				+ " \"idApresentador\") VALUES (?,?,?,?,?,?,?)";
 
 		 PreparedStatement create = con.prepareStatement(sql,  Statement.RETURN_GENERATED_KEYS);
 
@@ -42,6 +43,7 @@ public class DaoAtividade {
 			create.setTimestamp(4, horaF);
 			create.setInt(5, local);
 			create.setInt(6, tipo);
+			create.setInt(7, apresentador);
 			create.execute();
 			ResultSet generatedKeys;
 			try { 

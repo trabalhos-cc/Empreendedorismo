@@ -1,8 +1,8 @@
 package servico;
 
 import java.sql.Connection;
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 import controle.ColAtividade;
 import controle.ColLocal;
