@@ -2,32 +2,46 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
+import unioeste.geral.evento.bo.Apresentador;
 import unioeste.geral.evento.bo.Atividade;
-import unioeste.geral.evento.bo.Local;
-import unioeste.geral.evento.bo.SubLugar;
-import unioeste.geral.evento.bo.TipoAtividade;
 import util.NegocioException;
 
 public class DaoAtividade {
+	
+	public boolean validarAtividade(String nome, Connection con) {
+		
+		ArrayList<Atividade> a = new ArrayList<>();
 
-	public int insereAtividade(ArrayList<Atividade> listaAtividade, Connection con) throws SQLException {
+		try {
+			a = consultarPorNome(nome, con);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		if(a.size() > 0) return false;
+		return true;
+	}
 
-		String sql = "INSERT INTO atividade (nome, data, horario, idtipoAtividade, idlocal) VALUES (?,?,?,?,?)";
+	public int insereAtividade(String nome, Date data, Timestamp horaI, Timestamp horaF, int local, int tipo , Connection con) throws SQLException {
 
-		// PreparedStatement create = con.prepareStatement(sql);
+		String sql = "INSERT INTO \"Atividade\" (\"nome\", \"data\", \"horarioI\", \"horarioF\", \"idLocal\", \"idTipoAtividade\") "
+				+ "VALUES (?,?,?,?,?,?)";
 
-		for (Atividade atividade : listaAtividade) {
-			PreparedStatement create = con.prepareStatement(sql);
-			create.setString(1, atividade.getNome());
-			create.setDate(2, new Date (atividade.getData().getTime()));
-			create.setTime(3, atividade.getHorario());
-			create.setInt(4, atividade.getTipoAtividade().getId());
-			create.setInt(5, atividade.getLocal().getId());
+		 PreparedStatement create = con.prepareStatement(sql,  Statement.RETURN_GENERATED_KEYS);
+
+		
+			create.setString(1, nome);
+			create.setDate(2, data);
+			create.setTimestamp(3, horaI);
+			create.setTimestamp(4, horaF);
+			create.setInt(5, local);
+			create.setInt(6, tipo);
 			create.execute();
 			ResultSet generatedKeys;
 			try { 
@@ -37,52 +51,37 @@ public class DaoAtividade {
 			}catch (Exception e) {
 				System.out.println(e.getMessage());
 			    return 0;
-			}
-		}
-		return 0;
+			}	
 	}
 
-	public ArrayList<Atividade> consultarAtividade(int idAtividade, Connection con) throws NegocioException, SQLException {
+	public ArrayList<Atividade> consultarPorNome(String nome, Connection con) throws NegocioException, SQLException {
 		
 		ArrayList<Atividade> m = new ArrayList<Atividade>();
-		String sql = "SELECT * FROM atividade WHERE idatividade = ?;" ;
+		String sql = "SELECT nome FROM \"Atividade\" WHERE \"nome\" = ?;" ;
 				
 		PreparedStatement stt = con.prepareStatement(sql);
-		stt.setInt(1, idAtividade);
+		stt.setString(1, nome);
 		ResultSet res = stt.executeQuery();
 		int i=0;
 		while (res.next()) {
 			Atividade atividade = new Atividade();
-			TipoAtividade ta = new TipoAtividade();
-			atividade.setId(res.getInt("idapresentador"));
-			atividade.setData(res.getDate("data"));
-			atividade.setHorario(res.getTime("horario"));
 			atividade.setNome(res.getString("nome"));
-			
-			ta.setId(res.getInt("idtipoAtividade"));
-			ta.setNome(res.getString("nome"));
-			atividade.setTipoAtividade(ta);
-			
-			Local local = new Local();
-			SubLugar subLocal  = new SubLugar();
-			
-			local.setId(res.getInt("idlocal"));
-			local.setNome(res.getString("nome"));
-			local.setLatitude(res.getString("latitude"));
-			local.setLatitude(res.getString("longitude"));
-			
-			subLocal.setId(res.getInt("idsublugar"));
-			subLocal.setBloco(res.getString("bloco"));
-			subLocal.setBloco(res.getString("espaco"));
-			subLocal.setBloco(res.getString("sala"));
-			
-			local.setSubLugar(subLocal);
-			atividade.setLocal(local);
-			System.out.println(res.getString("Apresentador"));
+
+//			System.out.println(res.getString("Apresentador"));
 			
 			m.add(i,atividade);
 			i++;	
 		}
 		return m;
+	}
+	public int getId(String nome, Connection con) throws SQLException{
+		String sql = "SELECT id FROM \"TipoAtividade\" WHERE \"nome\" = ?";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setString(1, nome);
+		ResultSet res = stt.executeQuery();
+		if (!res.next()) return -1;
+		
+		return res.getInt("id");
 	}
 }

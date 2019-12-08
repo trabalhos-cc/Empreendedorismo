@@ -6,7 +6,9 @@ public class Local {
 	private String nome;
 	private String latitude;
 	private String longitude;
-	private SubLugar subLugar;
+	private int bloco;
+	private int espaco;
+	private int sala;
 	
 	public int getId() {
 		return id;
@@ -32,11 +34,23 @@ public class Local {
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
-	public SubLugar getSubLugar() {
-		return subLugar;
+	public int getBloco() {
+		return bloco;
 	}
-	public void setSubLugar(SubLugar subLugar) {
-		this.subLugar = subLugar;
+	public void setBloco(int bloco) {
+		this.bloco = bloco;
+	}
+	public int getEspaco() {
+		return espaco;
+	}
+	public void setEspaco(int espaco) {
+		this.espaco = espaco;
+	}
+	public int getSala() {
+		return sala;
+	}
+	public void setSala(int sala) {
+		this.sala = sala;
 	}
 	
 	

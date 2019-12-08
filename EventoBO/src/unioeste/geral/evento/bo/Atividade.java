@@ -1,7 +1,7 @@
 package unioeste.geral.evento.bo;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class Atividade {
@@ -9,10 +9,24 @@ public class Atividade {
 	private int id;
 	private String nome;
 	private Date data;
-	private Time horario;
-	private TipoAtividade tipoAtividade;
+	private Timestamp horarioI;
+	private Timestamp horarioF;
 	private Local local;
 	private ArrayList<Apresentador> apresentadores;
+	
+	public Timestamp getHorarioI() {
+		return horarioI;
+	}
+	public void setHorarioI(Timestamp horarioI) {
+		this.horarioI = horarioI;
+	}
+	public Timestamp getHorarioF() {
+		return horarioF;
+	}
+	public void setHorarioF(Timestamp horarioF) {
+		this.horarioF = horarioF;
+	}
+	private TipoAtividade tipoAtividade;
 	
 	public int getId() {
 		return id;
@@ -31,12 +45,6 @@ public class Atividade {
 	}
 	public void setData(Date data) {
 		this.data = data;
-	}
-	public Time getHorario() {
-		return horario;
-	}
-	public void setHorario(Time horario) {
-		this.horario = horario;
 	}
 	public TipoAtividade getTipoAtividade() {
 		return tipoAtividade;

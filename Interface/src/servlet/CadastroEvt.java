@@ -54,18 +54,16 @@ public class CadastroEvt extends HttpServlet {
 		
 		request.setCharacterEncoding("UTF-8");
 				
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 		String nome = request.getParameter("nome_evt");
 		Date datai = null;
-		String data_ini = request.getParameter("inicio");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
 		Date dataf = null;
+		String data_ini = request.getParameter("inicio");
 		String data_fim = request.getParameter("fim");
-		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 		
 		try {
 			datai = sdf.parse(data_ini);
-			dataf = sdf2.parse(data_fim);
+			dataf = sdf.parse(data_fim);
 		}catch(ParseException e ) {
 			e.printStackTrace();
 		}
