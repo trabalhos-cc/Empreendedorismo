@@ -8,7 +8,7 @@ public class Apresentador {
 	private String nome;
 	private String instituicao;
 	private String formacao;
-	private ArrayList <Atividade> atividades;
+//	private ArrayList <Atividade> atividades;
 	
 	public int getId() {
 		return id;
@@ -34,12 +34,12 @@ public class Apresentador {
 	public void setFormacao(String formacao) {
 		this.formacao = formacao;
 	}
-	public ArrayList<Atividade> getAtividades() {
-		return atividades;
-	}
-	public void setAtividades(ArrayList<Atividade> atividades) {
-		this.atividades = atividades;
-	}
+//	public ArrayList<Atividade> getAtividades() {
+//		return atividades;
+//	}
+//	public void setAtividades(ArrayList<Atividade> atividades) {
+//		this.atividades = atividades;
+//	}
 	
 	
 	

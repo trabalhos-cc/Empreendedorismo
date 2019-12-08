@@ -13,7 +13,17 @@ public class Atividade {
 	private Timestamp horarioF;
 	private Local local;
 	private ArrayList<Apresentador> apresentadores;
+	private TipoAtividade tipoAtividade;
+	private Evento evento;
 	
+	
+	
+	public Evento getEvento() {
+		return evento;
+	}
+	public void setEvento(Evento evento) {
+		this.evento = evento;
+	}
 	public Timestamp getHorarioI() {
 		return horarioI;
 	}
@@ -26,7 +36,6 @@ public class Atividade {
 	public void setHorarioF(Timestamp horarioF) {
 		this.horarioF = horarioF;
 	}
-	private TipoAtividade tipoAtividade;
 	
 	public int getId() {
 		return id;

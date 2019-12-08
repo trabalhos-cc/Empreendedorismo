@@ -2,15 +2,15 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import unioeste.geral.evento.bo.Apresentador;
 import unioeste.geral.evento.bo.Atividade;
+import unioeste.geral.evento.bo.TipoAtividade;
 import util.NegocioException;
 
 public class DaoAtividade {
@@ -28,11 +28,11 @@ public class DaoAtividade {
 		return true;
 	}
 
-	public int insereAtividade(String nome, Date data, Timestamp horaI, Timestamp horaF, int local, int tipo , 
-			int apresentador, Connection con) throws SQLException {
+	public int insereAtividade(String nome, Date data, Timestamp horaI, Timestamp horaF, int local, int tipo , int evento,
+		Connection con) throws SQLException {
 
-		String sql = "INSERT INTO \"Atividade\" (\"nome\", \"data\", \"horarioI\", \"horarioF\", \"idLocal\", \"idTipoAtividade\", "
-				+ " \"idApresentador\") VALUES (?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO \"Atividade\" (\"nome\", \"data\", \"horarioI\", \"horarioF\", \"idLocal\", \"idTipoAtividade\", \"idEvento\" )"
+				+ "VALUES (?,?,?,?,?,?,?) RETURNING \"idAtividade\"";
 
 		 PreparedStatement create = con.prepareStatement(sql,  Statement.RETURN_GENERATED_KEYS);
 
@@ -43,7 +43,7 @@ public class DaoAtividade {
 			create.setTimestamp(4, horaF);
 			create.setInt(5, local);
 			create.setInt(6, tipo);
-			create.setInt(7, apresentador);
+			create.setInt(7, evento);
 			create.execute();
 			ResultSet generatedKeys;
 			try { 
@@ -86,4 +86,21 @@ public class DaoAtividade {
 		
 		return res.getInt("id");
 	}
+	
+	public ArrayList<TipoAtividade> consultarTipo(Connection con) throws SQLException{
+		ArrayList<TipoAtividade> m = new ArrayList<TipoAtividade>();
+		String sql = "SELECT * FROM \"TipoAtividade\"";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		ResultSet res = stt.executeQuery();
+		
+		while(res.next()) {
+			TipoAtividade ta = new TipoAtividade();
+			ta.setId(res.getInt("id"));
+			ta.setNome(res.getString("nome"));
+			m.add(ta);
+		}
+		return m;
+	}
+	 
 }

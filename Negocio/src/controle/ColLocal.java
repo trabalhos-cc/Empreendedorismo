@@ -33,6 +33,15 @@ public class ColLocal {
 		return res;
 	}
 	
+	public String getLatitude(int id, Connection con) throws NegocioException, SQLException{
+		DaoLocal local = new DaoLocal();
+		return local.consultarLatitude(id, con);
+	}
+	
+	public String getLongitude(int id, Connection con) throws NegocioException, SQLException{
+		DaoLocal local = new DaoLocal();
+		return local.consultarLongitude(id, con);
+	}
 	public Connection getCon() {
 		return con;
 	}

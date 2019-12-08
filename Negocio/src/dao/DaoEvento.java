@@ -67,4 +67,15 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 		if(e.size() > 0) return false;
 		return true;
 	}
+	
+	public int getId(String nome, Connection con) throws SQLException{
+		String sql = "SELECT \"idEvento\" FROM \"Eventos\" WHERE \"nome\" = ? ";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setString(1, nome);
+		ResultSet res = stt.executeQuery();
+		if (!res.next()) return -1;
+		
+		return res.getInt("idEvento");
+	}
 }

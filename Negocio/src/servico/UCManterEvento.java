@@ -22,14 +22,13 @@ public class UCManterEvento {
 			
 			try {
 				if(nome != "") {
-				
 					Evento e = new Evento();
-						
 					e.setNome(nome);
 					e.setDataInicio(new java.sql.Date(ini.getTime()));
 					e.setDataFim(new java.sql.Date(fim.getTime()));
 					ok = colEvento.inserirEvento(e, con);
-					
+				}else {
+					System.err.println("Nome do Evento não pode ser nula!");
 				}
 				con.commit();
 					

@@ -67,4 +67,26 @@ public class DaoLocal {
 		
 		return res.getInt("idLocal");
 	}
+	
+	public String consultarLatitude (int id, Connection con) throws SQLException{
+		String sql = "SELECT \"latitude\"FROM \"Local\"Where \"idLocal\" = ? ";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setInt(1, id);
+		ResultSet res = stt.executeQuery();
+		if (!res.next()) return null;
+		
+		return res.getString("latitude");
+	}
+	
+	public String consultarLongitude (int id, Connection con) throws SQLException{
+		String sql = "SELECT \"longitude\"FROM \"Local\"Where \"idLocal\" = ? ";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setInt(1, id);
+		ResultSet res = stt.executeQuery();
+		if (!res.next()) return null;
+		
+		return res.getString("longitude");
+	}
 }

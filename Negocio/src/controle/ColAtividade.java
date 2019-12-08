@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dao.DaoAtividade;
+import dao.DaoEvento;
 import dao.DaoLocal;
 import unioeste.geral.evento.bo.Atividade;
 import unioeste.geral.evento.bo.Local;
@@ -25,15 +26,17 @@ public class ColAtividade {
 		int res = 0;
 		DaoAtividade daoAtividade = new DaoAtividade();
 		DaoLocal daoLocal = new DaoLocal();
+		DaoEvento daoEvento = new DaoEvento();
 		int idlocal = daoLocal.getId(local.getBloco(), local.getEspaco(), local.getSala(), con);
-		int idTipo = daoAtividade.getId(tp.getNome(), con);
-//		int idApresentador = dao
+		int idTipo = tp.getId();
+		int idEvento = daoEvento.getId(atividade.getEvento().getNome(), con);
+		
 		
 		if(daoAtividade.validarAtividade(atividade.getNome(), con)) {
 			if(idlocal != -1) {
 				if(idTipo != -1) {
 					res = daoAtividade.insereAtividade(atividade.getNome(), atividade.getData(),
-							atividade.getHorarioI(), atividade.getHorarioF(), idlocal, idTipo, con);
+							atividade.getHorarioI(), atividade.getHorarioF(), idlocal, idTipo, idEvento, con);
 				}else {
 					System.out.println("Tipo de Palestra inexistexte!");
 					
@@ -48,13 +51,15 @@ public class ColAtividade {
 		return res;
 	}
 	
-	public ArrayList<Atividade> consultarAtividade(int idAtividade, Connection con) throws NegocioException, SQLException{
-		
+//	public ArrayList<Atividade> consultarAtividade(int idAtividade, Connection con) throws NegocioException, SQLException{
+//		
+//		DaoAtividade atividade = new DaoAtividade();
+//		return atividade.consultarAtividade(idAtividade, con);
+//	}
+	
+	public ArrayList<TipoAtividade> consultarTipoAtividade(Connection con)throws NegocioException, SQLException{
 		DaoAtividade atividade = new DaoAtividade();
-			
-		ArrayList<Atividade> atividade1 /*= atividade.consultarAtividade(idAtividade, con)*/ = null;
-		
-		return atividade1;
+		return atividade.consultarTipo(con);
 	}
 	
 	public Connection getCon() {

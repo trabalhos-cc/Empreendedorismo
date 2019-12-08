@@ -44,11 +44,6 @@ public class CadastroEvt extends HttpServlet {
 				
 		doGet(request, response);
 		
-//		URL url = new URL("http://localhost:9877/homebankWS?wsdl");
-//		QName qname = new QName("http://servicos.homebank.geral.unioeste/", "HomeBankImplService");
-//		
-//		Service ws = Service.create(url, qname);
-//		UCManterEvento ucME = ws.getPort(UCManterEvento.class);
 		UCManterEvento ucME = new UCManterEvento();
 
 		
@@ -70,11 +65,6 @@ public class CadastroEvt extends HttpServlet {
 
 		System.out.println("Teste de dados \nnome:" + nome + " ini:" + data_ini +
 				" fim:" + data_fim);
-		
-//		//dados teste entre aspas é a variavel name no jsp, no caso de quiser retornar dados
-//		request.setAttribute("nome_evt", nome);
-//		request.setAttribute("inicio", data_ini);
-//		request.setAttribute("fim", data_fim);
 		
 		int res = 0;
 		if(nome != "") {

@@ -16,10 +16,26 @@ public class ColApresentador {
 		con = connection;
 	}
 	
-	public void inserirApresentador(ArrayList<Apresentador> apresentador, Connection con) throws NegocioException, SQLException {
+	public ArrayList<Integer> inserirApresentador(ArrayList<Apresentador> apresentador, Connection con) throws NegocioException, SQLException {
 		
+		int res = 0;
 		DaoApresentador apresentador1 = new DaoApresentador();
-		apresentador1.insereApresentador(apresentador, con);
+		ArrayList<Integer> id = new ArrayList<Integer>();
+		if(apresentador.size() > 0) {
+			for (Apresentador apresentador2 : apresentador) {
+				if(apresentador1.validarApresentador(apresentador2.getNome(), con)) {
+					res = apresentador1.insereApresentador(apresentador2.getNome(), apresentador2.getInstituicao(),
+							apresentador2.getFormacao(), con);
+					id.add(res);
+				}else {
+					System.out.println("Apresentador já possui Cadastro");
+				}
+			}
+			
+		}else {
+			System.out.println("Não Existe nome de apresentadores relacionado à atividade!");
+		}
+		return id;
 	}
 	
 	public ArrayList<Apresentador> consultarApresentador(int idApresentador, Connection con) throws NegocioException, SQLException{
