@@ -5,9 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-
-import unioeste.geral.evento.bo.Apresentador;
 
 public class DaoAtividadeApresentador {
 

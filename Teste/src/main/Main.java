@@ -1,13 +1,6 @@
 package main;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
-import servico.UCManterAtividade;
-import servico.UCManterEvento;
 import servico.UCQrCode;
-import unioeste.geral.evento.bo.Apresentador;
 import unioeste.geral.evento.bo.Evento;
 
 public class Main {

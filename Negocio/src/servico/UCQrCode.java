@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import controle.ColLocal;
 import dao.DaoAtividade;
-import dao.DaoAtividadeApresentador;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 import sql.Query;

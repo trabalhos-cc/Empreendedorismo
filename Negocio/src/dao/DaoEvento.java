@@ -9,13 +9,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import unioeste.geral.evento.bo.Evento;
-import unioeste.geral.evento.bo.TipoAtividade;
 
 public class DaoEvento {
 
 public int insereEvento(String nome, Date ini, Date fim, Connection con) throws SQLException {
 		
-		String sql = "INSERT INTO \"Eventos\" (\"nome\", \"dtInicio\", \"dtFim\") VALUES (?,?,?)";
+		String sql = "INSERT INTO \"Eventos\" (\"nome\", \"dtInicio\", \"dtFim\") VALUES (?,?,?) RETURNING \"idEvento\"";
 		
 		PreparedStatement create = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		create.setString(1,nome);
