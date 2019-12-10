@@ -45,22 +45,37 @@ public class CadastroAtiv extends HttpServlet {
 		doGet(request, response);
 		
 		
-		UCManterAtividade ucMA = new UCManterAtividade();
+//		UCManterAtividade ucMA = new UCManterAtividade();
 
 		
 		request.setCharacterEncoding("UTF-8");
 				
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		
+		//todos os dados chegam no formato string
 		String nome = request.getParameter("nome");
-		Date data = null;
+		String tipo = request.getParameter("tipo");
+		String data = request.getParameter("data");
+		String horIni = request.getParameter("horarioIni");
+		String horFim= request.getParameter("horarioFim");
+		String local = request.getParameter("local");
+		String bloco = request.getParameter("bloco");
+		String espaco = request.getParameter("espaco");
+		String sala = request.getParameter("sala");
+		String apresentadores [] = request.getParameterValues ("apresentador");
+		
+		System.out.println("teste avulso\n" + "nome=" + nome + " data= " + data 
+				+ " tipo= " + tipo + " horIni=" + horIni);
+		
+//		Date data = null;
 		String data_ini = request.getParameter("data");
 	
-		
-		try {
-			data = sdf.parse(data_ini);
-		}catch(ParseException e ) {
-			e.printStackTrace();
-		}
+//		
+//		try {
+//			data = sdf.parse(data_ini);
+//		}catch(ParseException e ) {
+//			e.printStackTrace();
+//		}
 
 //		System.out.println("Teste de dados \nnome:" + nome + " ini:" + data_ini +
 //				" fim:" + data_fim);

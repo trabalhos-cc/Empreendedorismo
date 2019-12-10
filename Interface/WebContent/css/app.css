@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+body{
+	background: linear-gradient(rgba(255,255,255,.5), 
+				rgba(255,255,255,.5)), 
+				url(../img/pti.jpg) no-repeat;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+.top-bar, .top-bar ul {
+	background: black;
+}
+
+table thead, table tbody {
+	background: transparent;
+}
+
+#camera {
+	position: absolute;
+	display: inline-block;
+
+}

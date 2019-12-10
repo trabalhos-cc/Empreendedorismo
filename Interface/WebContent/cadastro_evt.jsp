@@ -6,34 +6,24 @@
 <html>
 <head>
 <meta charset="utf-8">
+
 <title>Cadastro de Evento</title>
 <link rel="stylesheet" href="css/foundation.css">
-
-<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> -->
-<!-- <script type="text/javascript"> -->
-<!-- 
-
- 	$(document).ready(function(){
-         $("#botao_staff").on('click', function(){
-             $.ajax({
-                 url: '/CadastroEvt',
-                 type: "POST",
-                 success: function(){
-
-                 }
-             })
-         });
-     }); -->
-
-<!-- </script> -->
+<link rel="stylesheet" href="css/app.css">
 
 </head>
 <body>
 
-	<div class="top-bar" style="background-color: black">
+	<div class="title-bar" data-responsive-toggle="responsive-menu"
+		data-hide-for="medium">
+		<button class="menu-icon" type="button" data-toggle="responsive-menu"></button>
+		<div class="title-bar-title">Menu</div>
+	</div>
+
+	<div class="top-bar" id="responsive-menu">
 		<div class="top-bar-right">
-			<ul class="menu">
-				<li><a class="button" href="eventos.html">Voltar</a></li>
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li><a class="button" href="home.html">Voltar</a></li>
 			</ul>
 		</div>
 	</div>
@@ -52,13 +42,6 @@
 					</div>
 				</div>
 
-				<!-- 				<div class="medium-12 cell"> -->
-				<!-- 					<div class="input-group"> -->
-				<!-- 						<span class="input-group-label">Horário da Abertura</span> <input -->
-				<!-- 							class="input-group-field" type="time" name="horario"> -->
-				<!-- 					</div> -->
-				<!-- 				</div> -->
-
 				<div class="medium-12 cell">
 					<label for="hora_enc">Data </label>
 				</div>
@@ -76,34 +59,34 @@
 							class="input-group-field" type="date" name="fim" />
 					</div>
 				</div>
-				
-<!-- 				<div class="medium-12 cell"> -->
-<!-- 					<div class="input-group"> -->
-<!-- 						<span class="input-group-label">Local</span> <input -->
-<!-- 							class="input-group-field" type="text" name="local"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-				
-<!-- 				<div class="medium-4 cell"> -->
-<!-- 					<div class="input-group"> -->
-<!-- 						<span class="input-group-label">Bloco</span> <input -->
-<!-- 							class="input-group-field" type="text" name="bloco"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
 
-<!-- 				<div class="medium-4 cell"> -->
-<!-- 					<div class="input-group"> -->
-<!-- 						<span class="input-group-label">Espaço</span> <input -->
-<!-- 							class="input-group-field" type="text" name="espaco"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+				<!-- 				<div class="medium-12 cell"> -->
+				<!-- 					<div class="input-group"> -->
+				<!-- 						<span class="input-group-label">Local</span> <input -->
+				<!-- 							class="input-group-field" type="text" name="local"> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 
-<!-- 				<div class="medium-4 cell"> -->
-<!-- 					<div class="input-group"> -->
-<!-- 						<span class="input-group-label">Sala</span> <input -->
-<!-- 							class="input-group-field" type="text" name="sala"> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+				<!-- 				<div class="medium-4 cell"> -->
+				<!-- 					<div class="input-group"> -->
+				<!-- 						<span class="input-group-label">Bloco</span> <input -->
+				<!-- 							class="input-group-field" type="text" name="bloco"> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+
+				<!-- 				<div class="medium-4 cell"> -->
+				<!-- 					<div class="input-group"> -->
+				<!-- 						<span class="input-group-label">Espaço</span> <input -->
+				<!-- 							class="input-group-field" type="text" name="espaco"> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
+
+				<!-- 				<div class="medium-4 cell"> -->
+				<!-- 					<div class="input-group"> -->
+				<!-- 						<span class="input-group-label">Sala</span> <input -->
+				<!-- 							class="input-group-field" type="text" name="sala"> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 
 				<!-- 				<div class="medium-12 cell"> -->
 
@@ -162,14 +145,20 @@
 
 			</div>
 
-			<h1>${nome_evt}</h1>
-			<h1>${inicio}</h1>
-			<h1>${fim}</h1>
+			<%-- 			<h1>${nome_evt}</h1> --%>
+			<%-- 			<h1>${inicio}</h1> --%>
+			<%-- 			<h1>${fim}</h1> --%>
 
 			<input class="button" type="submit" value="Salvar"></input>
 
 		</div>
 
 	</form>
+
+	<script src="./js/vendor/jquery-3.4.1.js" type="text/javascript"></script>
+	<script src="./js/vendor/foundation.js" type="text/javascript"></script>
+	<script>
+		$(document).foundation();
+	</script>
 </body>
 </html>
