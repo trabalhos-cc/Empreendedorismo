@@ -87,8 +87,11 @@ public class UCQrCode {
 			//cria uma nova tabela com as atividades especificas de cada local 
 			for(int j = 0; j < ativ.size(); j++) {
 				if(buscaID(locais, ativ.get(j).getLocal().getId())) {
-					ativEspecifica.add(ativ.get(j));
+						
+						ativEspecifica.add(ativ.get(j));
+					
 				}
+//				ant = ativ.get(j).getId();
 			}
 			
 			
@@ -105,10 +108,13 @@ public class UCQrCode {
 				Timestamp timeF = ativEspecifica.get(j).getHorarioF(); 
 				String formatedTimeF = format.format(timeF.getTime()); 
 
-				buffer = ativEspecifica.get(j).getTipoAtividade().getNome() + " " 
+				buffer = ativEspecifica.get(j).getTipoAtividade().getNome() + " "
 						+ ativEspecifica.get(j).getNome() + "; " 
 						+ "Data:" + ativEspecifica.get(j).getData() + "; "
-						+ "Horario:" + formatedTimeI + " - " + formatedTimeF + "; \n";
+						+ "Horario:" + formatedTimeI + " - " + formatedTimeF + "; " 
+						+ "Bloco: " + ativEspecifica.get(j).getLocal().getBloco() + "; " 
+						+ "Espaço: " + ativEspecifica.get(j).getLocal().getEspaco() + "; " 
+						+ "Sala: " + ativEspecifica.get(j).getLocal().getSala() + "; \n";
 						/*+ *"Apresentadores" + ativEspecifica.get(j).getApresentadores() + ";*/
 				if(finalS == null) {
 					finalS = buffer;
