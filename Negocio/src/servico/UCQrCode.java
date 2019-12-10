@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import controle.ColLocal;
 import dao.DaoAtividade;
+import dao.DaoAtividadeApresentador;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 import sql.Query;
@@ -90,11 +91,12 @@ public class UCQrCode {
 				}
 			}
 			
+			
 			/*
 			 * gerar o arquivo.txt
 			 */
 			
-			SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");  
+			SimpleDateFormat format = new SimpleDateFormat("HH:mm");  
 			String buffer = null;
 			String finalS = null;
 			for(int j = 0; j < ativEspecifica.size(); j++) {
@@ -106,8 +108,8 @@ public class UCQrCode {
 				buffer = ativEspecifica.get(j).getTipoAtividade().getNome() + " " 
 						+ ativEspecifica.get(j).getNome() + "; " 
 						+ "Data:" + ativEspecifica.get(j).getData() + "; "
-						+ "Horario:" + formatedTimeI + " - " + formatedTimeF + "; "
-						+ "Apresentadores" + ativEspecifica.get(j).getApresentadores() + " ;\n";
+						+ "Horario:" + formatedTimeI + " - " + formatedTimeF + "; \n";
+						/*+ *"Apresentadores" + ativEspecifica.get(j).getApresentadores() + ";*/
 				if(finalS == null) {
 					finalS = buffer;
 				}else{
@@ -118,7 +120,7 @@ public class UCQrCode {
 			 * gerar qrCode
 			 */
 			
-			gerarQrCode("QrCode.png", finalS);
+			gerarQrCode("QrCode"+ i+".png", finalS);
 			System.out.println("QRCode gerado!");
 		}
 	}
