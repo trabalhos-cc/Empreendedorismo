@@ -102,5 +102,47 @@ public class DaoAtividade {
 		}
 		return m;
 	}
+	
+	public TipoAtividade consultarTipo(int id, Connection con) throws SQLException{
+		String sql = "SELECT * FROM \"TipoAtividade\" WHERE \"id\" = ?";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setInt(1, id);
+		ResultSet res = stt.executeQuery();
+		if (!res.next()) return null;
+		TipoAtividade ta = new TipoAtividade();
+		ta.setId(res.getInt("id"));
+		ta.setNome(res.getString("nome"));
+		
+		return ta;
+	}
+	public ArrayList<Atividade> buscarAtividadesPorEvento(int id, Connection con)throws SQLException{
+		String sql = "SELECT * FROM \"Atividade\" WHERE \"idEvento\" = ?";
+		ArrayList<Atividade> ativ = new ArrayList<Atividade>();
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setInt(1, id);
+		ResultSet res = stt.executeQuery();
+		int i=0;
+		while (res.next()) {
+			Atividade atividade = new Atividade();
+			DaoLocal local = new DaoLocal();
+			DaoEvento evento = new DaoEvento();
+			
+			atividade.setId(res.getInt("idAtividade"));
+			atividade.setNome(res.getString("nome"));
+			atividade.setData(res.getDate("data"));
+			atividade.setHorarioI(res.getTimestamp("horarioI"));
+			atividade.setHorarioF(res.getTimestamp("horarioF"));
+			atividade.setLocal(local.consultar(res.getInt("idLocal"), con));
+			atividade.setTipoAtividade(consultarTipo(res.getInt("idTipoAtividade"), con));
+			atividade.setEvento(evento.consultarEvento(res.getInt("idEvento"), con));
+			
+			ativ.add(i,atividade);
+			i++;	
+		}
+		return ativ;
+	}
+	
+	
 	 
 }

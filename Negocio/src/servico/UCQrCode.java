@@ -1,9 +1,12 @@
 package servico;
 
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import controle.ColLocal;
+import dao.DaoAtividade;
 import sql.Query;
+import unioeste.geral.evento.bo.Atividade;
 
 public class UCQrCode {
 
@@ -30,7 +33,7 @@ public class UCQrCode {
 		return ok;
 	}
 	
-public String getLongitude(int id) throws Exception{
+	public String getLongitude(int id) throws Exception{
 		
 		Connection con = Query.getConnection();
 		con.setAutoCommit(false);
@@ -50,4 +53,62 @@ public String getLongitude(int id) throws Exception{
 		}
 		return ok;
 	}
+
+	public void gerarQrCode(int idEvento) throws Exception{
+		/*
+		 * obter lista de atividade por sala
+		 */
+		
+		Connection con = Query.getConnection();
+		con.setAutoCommit(false);
+		
+		ArrayList<Atividade> ativ = new ArrayList<Atividade>();
+		DaoAtividade daoAtividade = new DaoAtividade();
+		
+		//obtem todas as atividades de um evento
+		ativ = daoAtividade.buscarAtividadesPorEvento(idEvento, con); 
+		
+		//obtem todos os locais que as atividades iram ocorrer
+		ArrayList<Integer> locais = obterLocais(ativ);
+		
+		//obtem as atividades de cada local
+		for(int i = 0; i < ativ.size(); i++) {
+			ArrayList<Atividade> ativEspecifica = new ArrayList<Atividade>();
+			
+			//cria uma nova tabela com as atividades especificas de cada local 
+			for(int j = 0; j < ativ.size(); j++) {
+				if(buscaID(locais, ativ.get(j).getLocal().getId())) {
+					ativEspecifica.add(ativ.get(j));
+				}
+			}
+			
+			/*
+			 * gerar o arquivo.txt
+			 */
+			
+			
+			/*
+			 * gerar qrCode
+			 */
+		}
+	}
+	
+	private ArrayList<Integer> obterLocais(ArrayList<Atividade> geral){
+		ArrayList<Integer> local = new ArrayList<Integer>();
+		
+		for(int i = 0; i < geral.size(); i++) {
+			if(!buscaID(local, i)) {
+				local.add(geral.get(i).getLocal().getId());
+			}	
+		}
+		return local;
+	}
+	
+	private boolean buscaID(ArrayList<Integer> lista, int index) {
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i) == index) return true;
+		}
+		return false;
+	}
+	
 }

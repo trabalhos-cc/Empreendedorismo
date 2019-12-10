@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import unioeste.geral.evento.bo.Evento;
+import unioeste.geral.evento.bo.TipoAtividade;
 
 public class DaoEvento {
 
@@ -77,5 +78,21 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 		if (!res.next()) return -1;
 		
 		return res.getInt("idEvento");
+	}
+	
+	public Evento consultarEvento(int id, Connection con) throws SQLException{
+		String sql = "SELECT * FROM \"Evento\" WHERE \"idEvento\" = ?";
+		
+		PreparedStatement stt = con.prepareStatement(sql);
+		stt.setInt(1, id);
+		ResultSet res = stt.executeQuery();
+		if (!res.next()) return null;
+		Evento evento = new Evento();
+		evento.setId(res.getInt("idevento"));
+		evento.setNome(res.getString("nome"));
+		evento.setDataInicio(res.getDate("dtInicio"));
+		evento.setDataFim(res.getDate("dtFim"));
+		
+		return evento;
 	}
 }
