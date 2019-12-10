@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import servico.UCManterEvento;
+import unioeste.geral.evento.bo.Evento;
 
 /**
  * Servlet implementation class CadastroEvt
@@ -54,7 +55,7 @@ public class CadastroEvt extends HttpServlet {
 		Date datai = null;
 		Date dataf = null;
 		String data_ini = request.getParameter("inicio");
-		String data_fim = request.getParameter("fim");
+		String data_fim = request.getParameter("fim");		
 		
 		try {
 			datai = sdf.parse(data_ini);
@@ -66,28 +67,29 @@ public class CadastroEvt extends HttpServlet {
 		System.out.println("Teste de dados \nnome:" + nome + " ini:" + data_ini +
 				" fim:" + data_fim);
 		
-		int res = 0;
-		if(nome != "") {
+//		int res = 0;
+//		if(nome != "") {
 			try {
 				
-				res = ucME.cadastrarEvento(nome, datai, dataf); 
+				int res = ucME.cadastrarEvento(nome, datai, dataf); 
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
-		HttpSession session = request.getSession();
+//		}
+//		HttpSession session = request.getSession();
 		
-		if(res == 1) {
-			session.setAttribute("Alert", "Transfência Realizada");
-			response.sendRedirect("index.jsp");
-		}
-		else {
-			session.setAttribute("Alert", "Ocorreu um erro ao transferir!");
-			response.sendRedirect("index.jsp");
-		}
-		
-		request.getRequestDispatcher("").forward(request, response);
+//		if(res == 1) {
+//			session.setAttribute("Alert", "Transfência Realizada");
+//			response.sendRedirect("index.jsp");
+//		}
+//		else {
+//			session.setAttribute("Alert", "Ocorreu um erro ao transferir!");
+//			response.sendRedirect("index.jsp");
+//		}
+//		
+		request.setAttribute("nome_evt", nome);
+		request.getRequestDispatcher("cadastrar_ativ.jsp").forward(request, response);
 		
 	}
 

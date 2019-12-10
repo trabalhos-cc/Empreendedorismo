@@ -37,7 +37,7 @@
 
 				<div class="medium-12 cell">
 					<div class="input-group">
-						<span class="input-group-label">Nome do Evento</span> <input
+						<span class="input-group-label">Nome do Evento</span> <input id="nome_evt"
 							class="input-group-field" type="text" name="nome_evt" />
 					</div>
 				</div>
@@ -144,10 +144,6 @@
 					Atividade</a>
 
 			</div>
-
-			<%-- 			<h1>${nome_evt}</h1> --%>
-			<%-- 			<h1>${inicio}</h1> --%>
-			<%-- 			<h1>${fim}</h1> --%>
 
 			<input class="button" type="submit" value="Salvar"></input>
 

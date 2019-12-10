@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import unioeste.geral.evento.bo.Apresentador;
-import unioeste.geral.evento.bo.Atividade;
 import util.NegocioException;
 
 public class DaoApresentador {

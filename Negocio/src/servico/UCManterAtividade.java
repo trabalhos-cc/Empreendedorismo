@@ -7,6 +7,7 @@ import java.util.Date;
 import controle.ColApresentador;
 import controle.ColAtividade;
 import controle.ColAtividadeApresentador;
+import dao.DaoAtividade;
 import sql.Query;
 import unioeste.geral.evento.bo.Apresentador;
 import unioeste.geral.evento.bo.Atividade;
@@ -101,5 +102,12 @@ public class UCManterAtividade {
 		
 		ColAtividade colAtividade = new ColAtividade(con);
 		return colAtividade.consultarTipoAtividade(con);
+	}
+	
+	public int getIDTipo(String nome) throws Exception{
+		Connection con = Query.getConnection();
+		
+		DaoAtividade daoAtividade = new DaoAtividade ();
+		return daoAtividade.getId(nome, con);
 	}
 }

@@ -33,6 +33,14 @@
 
 				<div class="medium-12 cell">
 					<div class="input-group">
+						<span class="input-group-label"> Nome do Evento</span> <input
+							class="input-group-field" type="text" name="nome_evt"
+							value="${nome_evt}">
+					</div>
+				</div>
+
+				<div class="medium-12 cell">
+					<div class="input-group">
 						<span class="input-group-label"> Nome da Atividade</span> <input
 							class="input-group-field" type="text" name="nome">
 					</div>
@@ -45,6 +53,11 @@
 							<option value="palestra">Palestra</option>
 							<option value="oficina">Oficina</option>
 							<option value="minicurso">Minicurso</option>
+							<option value="minicurso">Workshop</option>
+							<option value="minicurso">Mesa Redonda</option>
+							<option value="minicurso">Comunicação Oral</option>
+							<option value="minicurso">Apresentação de Poster</option>
+							<option value="minicurso">Roda de Conversa</option>
 						</select>
 					</div>
 				</div>
@@ -70,12 +83,12 @@
 					</div>
 				</div>
 
-				<div class="medium-12 cell">
-					<div class="input-group">
-						<span class="input-group-label">Nome do local</span> <input
-							class="input-group-field" type="text" name="local">
-					</div>
-				</div>
+				<!-- 				<div class="medium-12 cell"> -->
+				<!-- 					<div class="input-group"> -->
+				<!-- 						<span class="input-group-label">Nome do local</span> <input -->
+				<!-- 							class="input-group-field" type="text" name="local"> -->
+				<!-- 					</div> -->
+				<!-- 				</div> -->
 
 				<div class="medium-4 cell">
 					<div class="input-group">

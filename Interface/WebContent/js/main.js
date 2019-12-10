@@ -4,9 +4,9 @@ function init() {
 
 	const view = new ol.View({
 		center : [-6077519.708130797, -2929317.5777599094],
-		zoom: 11,
+		zoom: 15,
 		minZoom: 9,
-		maxZoom: 13,
+		maxZoom: 20,
 	});
 
 	const map = new ol.Map({
