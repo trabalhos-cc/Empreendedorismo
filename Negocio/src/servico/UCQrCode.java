@@ -1,10 +1,18 @@
 package servico;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import controle.ColLocal;
 import dao.DaoAtividade;
+import net.glxn.qrgen.QRCode;
+import net.glxn.qrgen.image.ImageType;
 import sql.Query;
 import unioeste.geral.evento.bo.Atividade;
 
@@ -54,7 +62,7 @@ public class UCQrCode {
 		return ok;
 	}
 
-	public void gerarQrCode(int idEvento) throws Exception{
+	public void QrCode(int idEvento) throws Exception{
 		/*
 		 * obter lista de atividade por sala
 		 */
@@ -86,10 +94,32 @@ public class UCQrCode {
 			 * gerar o arquivo.txt
 			 */
 			
-			
+			SimpleDateFormat format = new SimpleDateFormat("hh:mm:ss");  
+			String buffer = null;
+			String finalS = null;
+			for(int j = 0; j < ativEspecifica.size(); j++) {
+				Timestamp timeI = ativEspecifica.get(j).getHorarioI(); 
+				String formatedTimeI = format.format(timeI.getTime()); 
+				Timestamp timeF = ativEspecifica.get(j).getHorarioF(); 
+				String formatedTimeF = format.format(timeF.getTime()); 
+
+				buffer = ativEspecifica.get(j).getTipoAtividade().getNome() + " " 
+						+ ativEspecifica.get(j).getNome() + "; " 
+						+ "Data:" + ativEspecifica.get(j).getData() + "; "
+						+ "Horario:" + formatedTimeI + " - " + formatedTimeF + "; "
+						+ "Apresentadores" + ativEspecifica.get(j).getApresentadores() + " ;\n";
+				if(finalS == null) {
+					finalS = buffer;
+				}else{
+					finalS = finalS.concat(buffer);
+				}
+			}
 			/*
 			 * gerar qrCode
 			 */
+			
+			gerarQrCode("QrCode.png", finalS);
+			System.out.println("QRCode gerado!");
 		}
 	}
 	
@@ -109,6 +139,22 @@ public class UCQrCode {
 			if(lista.get(i) == index) return true;
 		}
 		return false;
+	}
+	
+	private void gerarQrCode(String fileName, String info) throws FileNotFoundException, IOException{
+		
+		int size = 125; // tamanho do QrCode
+		FileOutputStream f = new FileOutputStream(fileName); 
+		try {
+			ByteArrayOutputStream out = QRCode.from(info).to(ImageType.PNG).withSize(size, size).stream();
+			
+			f.write(out.toByteArray());
+			f.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+			System.err.println("Erro ao salvar o QrCode");
+		}
+		
 	}
 	
 }

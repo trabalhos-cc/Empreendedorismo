@@ -34,8 +34,8 @@ public class DaoLocal {
 	}
 	
 	public Local consultar(int id, Connection con) throws SQLException {
-		String sql = "SELECT local.* FROM local"
-				+ " WHERE local.idlocal = ?;";
+		String sql = "SELECT * FROM \"Local\""
+				+ " WHERE \"idLocal\" = ?;";
 		PreparedStatement stt = con.prepareStatement(sql);
 		stt.setInt(1, id);
 		ResultSet res = stt.executeQuery();
@@ -44,7 +44,7 @@ public class DaoLocal {
 		}
 		Local local = new Local();
 		
-		local.setId(res.getInt("idlocal"));
+		local.setId(res.getInt("idLocal"));
 		local.setNome(res.getString("nome"));
 		local.setLatitude(res.getString("latitude"));
 		local.setLatitude(res.getString("longitude"));

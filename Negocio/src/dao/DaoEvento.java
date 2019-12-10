@@ -81,14 +81,14 @@ public int insereEvento(String nome, Date ini, Date fim, Connection con) throws 
 	}
 	
 	public Evento consultarEvento(int id, Connection con) throws SQLException{
-		String sql = "SELECT * FROM \"Evento\" WHERE \"idEvento\" = ?";
+		String sql = "SELECT * FROM \"Eventos\" WHERE \"idEvento\" = ?";
 		
 		PreparedStatement stt = con.prepareStatement(sql);
 		stt.setInt(1, id);
 		ResultSet res = stt.executeQuery();
 		if (!res.next()) return null;
 		Evento evento = new Evento();
-		evento.setId(res.getInt("idevento"));
+		evento.setId(res.getInt("idEvento"));
 		evento.setNome(res.getString("nome"));
 		evento.setDataInicio(res.getDate("dtInicio"));
 		evento.setDataFim(res.getDate("dtFim"));
