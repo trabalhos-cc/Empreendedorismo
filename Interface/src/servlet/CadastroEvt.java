@@ -71,7 +71,7 @@ public class CadastroEvt extends HttpServlet {
 //		if(nome != "") {
 			try {
 				
-				int res = ucME.cadastrarEvento(nome, datai, dataf); 
+				int idEvento = ucME.cadastrarEvento(nome, datai, dataf); 
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -89,7 +89,7 @@ public class CadastroEvt extends HttpServlet {
 //		}
 //		
 		request.setAttribute("nome_evt", nome);
-		request.getRequestDispatcher("cadastrar_ativ.jsp").forward(request, response);
+		request.getRequestDispatcher("").forward(request, response);
 		
 	}
 

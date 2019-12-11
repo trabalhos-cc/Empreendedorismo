@@ -1,7 +1,5 @@
 package unioeste.geral.evento.bo;
 
-import java.util.ArrayList;
-
 public class Apresentador {
 
 	private int id;
